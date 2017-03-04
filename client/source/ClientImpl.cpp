@@ -10,7 +10,7 @@ void fxtm::ClientImpl::start()
 {
     while (mRunning)
     {
-        mTransferManager.sendAndReceive(mDataManager.getData());
+        mNetworkManager.sendAndReceive(mDataManager.getData());
     }
 }
 

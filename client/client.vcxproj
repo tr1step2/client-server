@@ -115,14 +115,14 @@
     <ClCompile Include="source\DataManager.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\TransferManager.cpp" />
+    <ClCompile Include="source\NetworkManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\client.hpp" />
     <ClInclude Include="source\clientimpl.hpp" />
     <ClInclude Include="source\DataManager.hpp" />
     <ClInclude Include="source\Logger.hpp" />
-    <ClInclude Include="source\TransferManager.hpp" />
+    <ClInclude Include="source\NetworkManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

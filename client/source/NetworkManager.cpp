@@ -2,16 +2,14 @@
 #include <iostream>
 #include <thread>
 
-#include "TransferManager.hpp"
+#include "NetworkManager.hpp"
 
-fxtm::TransferManager::TransferManager()
+fxtm::NetworkManager::NetworkManager()
 {
 
 }
 
-void fxtm::TransferManager::sendAndReceive(const std::string & data)
+void fxtm::NetworkManager::sendAndReceive(const std::string & data)
 {
-    std::cout << "Send : " << data << std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds((rand() % 3) + 1));
-    std::cout << "Receive : nothing" << std::endl;
+
 }

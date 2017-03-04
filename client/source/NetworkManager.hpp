@@ -5,10 +5,10 @@
 namespace fxtm
 {
 
-class TransferManager
+class NetworkManager
 {
 public:
-    TransferManager();
+    NetworkManager();
 
     void sendAndReceive(const std::string & data);
 };

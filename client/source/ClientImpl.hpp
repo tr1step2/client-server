@@ -2,7 +2,7 @@
 
 #include <atomic>
 
-#include "TransferManager.hpp"
+#include "NetworkManager.hpp"
 #include "DataManager.hpp"
 #include "Logger.hpp"
 
@@ -18,7 +18,7 @@ public:
     void stop();
 
 private:
-    TransferManager mTransferManager;
+    NetworkManager mNetworkManager;
     DataManager mDataManager;
     Logger mLogger;
 

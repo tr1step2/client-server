@@ -2,7 +2,7 @@
 
 #include "Logger.hpp"
 
-void fxtm::Logger::log(const std::string & message)
+void fxtm::Logger::log(std::string && message)
 {
-    std::cout << message << std::endl;
+	std::cout << message << std::endl;
 }

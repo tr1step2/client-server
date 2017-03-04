@@ -26,7 +26,7 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\TransferManager.cpp">
+    <ClCompile Include="source\NetworkManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -43,7 +43,7 @@
     <ClInclude Include="source\Logger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\TransferManager.hpp">
+    <ClInclude Include="source\NetworkManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
