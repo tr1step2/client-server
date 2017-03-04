@@ -29,13 +29,15 @@ void fxtm::NetworkManager::sendAndReceive(const std::string & data)
 
 std::string fxtm::NetworkManager::sendAndReceiveImpl(const std::string &data)
 {
-    size_t sendBytes = boost::asio::write(mSocket, boost::asio::buffer(data.data(), data.size()));
+    size_t sendBytes = mSocket.write_some(boost::asio::buffer(data.data(), data.size()));
 
     if (sendBytes != data.size())
         throw std::runtime_error("Can't send data to server.");
 
     std::array<char, fxtm::defaultMessageSize> response;
-    size_t recieveBytes = boost::asio::read(mSocket, boost::asio::buffer(&response, fxtm::defaultMessageSize));
+    size_t recieveBytes = mSocket.read_some(boost::asio::buffer(&response, fxtm::defaultMessageSize));
 
     return std::string(response.cbegin(), response.cbegin() + recieveBytes);
+
+	return "HUY";
 }

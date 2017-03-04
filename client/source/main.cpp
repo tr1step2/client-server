@@ -4,16 +4,23 @@
 
 int main()
 {
-    fxtm::Client client;
+	try
+	{
+		fxtm::Client client;
 
-    std::cout << "Press any key to stop client" << std::endl;
+		std::cout << "Press any key to stop client" << std::endl;
 
-    client.start();
+		client.start();
 
-    //sleep main thread until key pressed
-    std::cin.get();
+		//sleep main thread until key pressed
+		std::cin.get();
 
-    client.stop();
+		client.stop();
+	}
+	catch (const std::exception & ex)
+	{
+		std::cout << "Some exception occured: " << ex.what() << std::endl;
+	}
 
     return 0;
 }
