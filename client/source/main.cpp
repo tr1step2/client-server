@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "client.hpp"
+#include "Client.hpp"
 
 int main()
 {
@@ -8,13 +8,12 @@ int main()
 
     std::cout << "Press any key to stop client" << std::endl;
 
-	client.start();
+    client.start();
 
-	//sleep main thread until key pressed
+    //sleep main thread until key pressed
     std::cin.get();
 
     client.stop();
 
     return 0;
 }
-
