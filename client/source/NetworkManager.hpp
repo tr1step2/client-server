@@ -1,12 +1,13 @@
 #pragma once
 
 #include <string>
+
 #include <boost/asio.hpp>
+
+#include "Constants.hpp"
 
 namespace fxtm
 {
-
-constexpr size_t defaultMessageSize = 32;
 
 class NetworkManager
 {

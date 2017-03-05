@@ -4,7 +4,8 @@ project(FXTM-test-server)
 
 aux_source_directory(./source SRC_LIST)
 
-include_directories(${BOOST_PATH})
+include_directories(${BOOST_PATH}
+                    ${CMAKE_CURRENT_SOURCE_DIR}/../common/)
 link_directories(${BOOST_LIB_PATH})
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})

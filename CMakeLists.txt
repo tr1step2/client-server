@@ -4,3 +4,5 @@ project(FXTM-test)
 
 add_subdirectory(server)
 add_subdirectory(client)
+
+include_directories(common)

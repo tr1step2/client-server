@@ -8,11 +8,10 @@
 #include "boost/asio.hpp"
 
 #include "DataManager.hpp"
+#include "Constants.hpp"
 
 namespace fxtm
 {
-
-constexpr size_t defaultMessageSize = 32;
 
 class Session : public std::enable_shared_from_this<Session>
 {
