@@ -3,8 +3,8 @@
 
 #include "client.hpp"
 
-fxtm::Client::Client(const std::string &address, const std::string &port)
-    : mImpl(new fxtm::ClientImpl(address, port))
+fxtm::Client::Client(const std::string & host, const short port)
+    : mImpl(new fxtm::ClientImpl(host, port))
 {
 }
 

@@ -11,11 +11,10 @@ namespace fxtm
 class Client
 {
 public:
-    Client(const std::string & address = "127.0.0.1",
-           const std::string & port = "2001");
+    Client(const std::string & host,
+           const short port);
 
     void start();
-    void wait();
     void stop();
 
 private:

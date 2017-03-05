@@ -12,7 +12,7 @@ namespace fxtm
 class ClientImpl
 {
 public:
-    ClientImpl(const std::string & address, const std::string & port);
+    ClientImpl(const std::string & host, const short port);
 
     void start();
     void stop();

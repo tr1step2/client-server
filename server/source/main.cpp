@@ -1,18 +1,28 @@
 #include <iostream>
 
+#include <boost/lexical_cast.hpp>
+
 #include "Server.hpp"
+#include "Logger.hpp"
 
 int main(int argc, char ** argv)
 {
     try
     {
-        //listen 2001 port, store data on disk every 30 sec
-        fxtm::Server server(2001, 30);
+        short port = 2001;
+        size_t syncInterval = 30;
+
+        if (argc > 1)
+            port = boost::lexical_cast<short>(argv[1]);
+        if (argc > 2)
+            syncInterval = boost::lexical_cast<size_t>(argv[2]);
+
+        fxtm::Server server(port, syncInterval);
         server.run();
     }
-    catch (std::exception& e)
+    catch (const std::exception & ex)
     {
-        std::cerr << "Exception: " << e.what() << "\n";
+        fxtm::Logger::log(ex.what());
     }
 
     return 0;

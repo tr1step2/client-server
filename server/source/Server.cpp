@@ -1,5 +1,6 @@
 #include "Server.hpp"
 #include "Session.hpp"
+#include "Logger.hpp"
 
 using boost::asio::ip::tcp;
 
@@ -8,6 +9,7 @@ fxtm::Server::Server(const short port, size_t syncInterval)
     , mSocket(mService)
     , mDataManager(new fxtm::DataManager(syncInterval))
 {
+    Logger::log("SERVER | Listening port: " + std::to_string(port));
     doAccept();
 }
 

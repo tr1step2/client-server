@@ -12,7 +12,7 @@ namespace fxtm
 class NetworkManager
 {
 public:
-    NetworkManager(const std::string & address, const std::string & port);
+    NetworkManager(const std::string & host, const short port);
     void sendAndReceive(const std::string & data);
 
 private:

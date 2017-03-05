@@ -1,3 +1,4 @@
+#include <exception>
 #include <stdexcept>
 #include <array>
 #include <string>
@@ -10,12 +11,12 @@
 
 using boost::asio::ip::tcp;
 
-fxtm::NetworkManager::NetworkManager(const std::string & address,
-                                     const std::string & port)
+fxtm::NetworkManager::NetworkManager(const std::string & host,
+                                     const short port)
     : mSocket(mService)
 {
 	boost::asio::connect(mSocket,
-		boost::asio::ip::tcp::resolver(mService).resolve({ address, port }));
+        boost::asio::ip::tcp::resolver(mService).resolve({ host, std::to_string(port)}));
 }
 
 void fxtm::NetworkManager::sendAndReceive(const std::string & data)

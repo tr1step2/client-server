@@ -1,26 +1,36 @@
 #include <iostream>
+#include <string>
 
 #include "Client.hpp"
+#include "Logger.hpp"
 
-int main()
+int main(int argc, char ** argv)
 {
 	try
 	{
-		fxtm::Client client;
+        std::string host = "127.0.0.1";
+        short port = 2001;
 
-		std::cout << "Press any key to stop client" << std::endl;
+        if (argc > 1)
+            host = boost::lexical_cast<std::string>(argv[1]);
+        if (argc > 2)
+            port = boost::lexical_cast<short>(argv[2]);
 
-		client.start();
+        fxtm::Client client(host, port);
+
+        std::cout << "Press any key to stop client" << std::endl;
+
+        client.start();
 
 		//sleep main thread until key pressed
-		std::cin.get();
+        std::cin.get();
 
-		client.stop();
-	}
-	catch (const std::exception & ex)
-	{
-		std::cout << "Some exception occured: " << ex.what() << std::endl;
-	}
+        client.stop();
+    }
+    catch (const std::exception & ex)
+    {
+        fxtm::Logger::log(ex.what());
+    }
 
     return 0;
 }

@@ -1,9 +1,9 @@
 #include <thread>
 #include "clientimpl.hpp"
 
-fxtm::ClientImpl::ClientImpl(const std::string & address, const std::string & port)
+fxtm::ClientImpl::ClientImpl(const std::string & host, const short port)
     : mRunning(true)
-    , mNetworkManager(address, port)
+    , mNetworkManager(host, port)
 {
 }
 
