@@ -13,7 +13,7 @@ void fxtm::DataManager::updateData(std::uint16_t value, double & avg)
     std::lock_guard<std::mutex> lock(mLockCache);
 
     mCachedCount += 1;
-    mCachedTotal += value;
+    mCachedTotal += value * value;
 
     avg = (double)mCachedTotal / mCachedCount;
 
