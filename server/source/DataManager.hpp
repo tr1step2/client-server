@@ -12,7 +12,7 @@ namespace fxtm
 class DataManager
 {
 public:
-    DataManager();
+    DataManager(size_t syncInterval);
     void updateData(std::uint16_t value, double & avg);
 
 private:

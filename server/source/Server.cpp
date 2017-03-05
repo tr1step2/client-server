@@ -3,10 +3,10 @@
 
 using boost::asio::ip::tcp;
 
-fxtm::Server::Server(const short port)
+fxtm::Server::Server(const short port, size_t syncInterval)
     : mAcceptor(mService, tcp::endpoint(tcp::v4(), port))
     , mSocket(mService)
-    , mDataManager(new fxtm::DataManager)
+    , mDataManager(new fxtm::DataManager(syncInterval))
 {
     doAccept();
 }

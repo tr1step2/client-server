@@ -13,7 +13,7 @@ class StoreManager
 {
 public:
     StoreManager(const std::multiset<uint16_t> & storage, std::mutex & storageMutex,
-                 size_t mSyncSecondsInterval = 30);
+                 size_t mSyncSecondsInterval);
     ~StoreManager();
 
 private:

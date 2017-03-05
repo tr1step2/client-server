@@ -14,7 +14,7 @@ namespace fxtm
 class Server
 {
 public:
-    Server(const short port = 2001);
+    Server(const short port, size_t syncInterval);
 
     void run();
 

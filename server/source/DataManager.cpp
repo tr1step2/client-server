@@ -2,8 +2,8 @@
 
 #include "DataManager.hpp"
 
-fxtm::DataManager::DataManager()
-    : mStoreManager(mDataStorage, mLockStorage)
+fxtm::DataManager::DataManager(size_t syncInterval)
+    : mStoreManager(mDataStorage, mLockStorage, syncInterval)
 {
 
 }
