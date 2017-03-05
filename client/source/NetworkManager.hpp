@@ -11,15 +11,17 @@ constexpr size_t defaultMessageSize = 32;
 class NetworkManager
 {
 public:
-    NetworkManager(const std::string & address = "127.0.0.1", const std::string & port = "2001");
+    NetworkManager(const std::string & address, const std::string & port);
     void sendAndReceive(const std::string & data);
 
 private:
     std::string sendAndReceiveImpl(const std::string & data);
 
 private:
+    std::string mAddress;
+    std::string mPort;
     boost::asio::io_service mService;
-    boost::asio::ip::tcp::socket mSocket;
+    boost::asio::ip::tcp::resolver mResolver;
 };
 
 } // ns fxtm

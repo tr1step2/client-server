@@ -5,7 +5,7 @@
 std::string fxtm::DataManager::getData()
 {
     std::stringstream ss;
-    ss << (std::rand() % 1024);
+    ss << ((std::rand() % 4) + 1);
 
     return ss.str();
 }

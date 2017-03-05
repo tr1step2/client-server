@@ -9,11 +9,12 @@
 
 using boost::asio::ip::tcp;
 
-fxtm::NetworkManager::NetworkManager(const std::string & address, const std::string & port)
-    : mSocket(mService)
+fxtm::NetworkManager::NetworkManager(const std::string & address,
+                                     const std::string & port)
+    : mAddress(address)
+    , mPort(port)
+    , mResolver(mService)
 {
-    tcp::resolver resolver(mService);
-    boost::asio::connect(mSocket, resolver.resolve({address.c_str(), port.c_str()}));
 }
 
 void fxtm::NetworkManager::sendAndReceive(const std::string & data)
@@ -24,20 +25,21 @@ void fxtm::NetworkManager::sendAndReceive(const std::string & data)
 
     Logger::log("CLIENT | Response: " + resp);
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 std::string fxtm::NetworkManager::sendAndReceiveImpl(const std::string &data)
 {
-    size_t sendBytes = mSocket.write_some(boost::asio::buffer(data.data(), data.size()));
+    tcp::socket socket(mService);
+    boost::asio::connect(socket, mResolver.resolve({mAddress.c_str(), mPort.c_str()}));
+
+    size_t sendBytes = socket.write_some(boost::asio::buffer(data.data(), data.size()));
 
     if (sendBytes != data.size())
         throw std::runtime_error("Can't send data to server.");
 
-    std::array<char, fxtm::defaultMessageSize> response;
-    size_t recieveBytes = mSocket.read_some(boost::asio::buffer(&response, fxtm::defaultMessageSize));
+    std::array<char, fxtm::defaultMessageSize> buf;
+    size_t readBytes = boost::asio::read(socket, boost::asio::buffer(buf, fxtm::defaultMessageSize));
 
-    return std::string(response.cbegin(), response.cbegin() + recieveBytes);
-
-	return "HUY";
+    return std::string(buf.cbegin(), buf.cbegin() + readBytes);
 }

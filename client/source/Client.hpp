@@ -2,7 +2,8 @@
 
 #include <memory>
 #include <thread>
-#include "clientimpl.hpp"
+
+#include "ClientImpl.hpp"
 
 namespace fxtm
 {
@@ -10,7 +11,8 @@ namespace fxtm
 class Client
 {
 public:
-    Client();
+    Client(const std::string & address = "127.0.0.1",
+           const std::string & port = "2001");
 
     void start();
     void wait();
