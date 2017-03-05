@@ -16,7 +16,7 @@ public:
     void updateData(std::uint16_t value, double & avg);
 
 private:
-    std::set<std::uint16_t> mDataStorage;
+    std::multiset<std::uint16_t> mDataStorage;
     size_t mCachedTotal = 0;
     size_t mCachedCount = 0;
 

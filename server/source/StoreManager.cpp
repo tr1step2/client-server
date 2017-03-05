@@ -1,10 +1,9 @@
 #include "StoreManager.hpp"
 
-fxtm::StoreManager::StoreManager(const std::set<uint16_t> & storage, std::mutex & storageMutex)
+fxtm::StoreManager::StoreManager(const std::multiset<uint16_t> & storage, std::mutex & storageMutex)
     : mStorage(storage)
     , mStorageMutex(storageMutex)
 {
-
 }
 
 fxtm::StoreManager::~StoreManager()

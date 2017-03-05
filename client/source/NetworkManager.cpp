@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <iostream>
 
 #include "NetworkManager.hpp"
 #include "Logger.hpp"
@@ -11,10 +12,10 @@ using boost::asio::ip::tcp;
 
 fxtm::NetworkManager::NetworkManager(const std::string & address,
                                      const std::string & port)
-    : mAddress(address)
-    , mPort(port)
-    , mResolver(mService)
+    : mSocket(mService)
 {
+	boost::asio::connect(mSocket,
+		boost::asio::ip::tcp::resolver(mService).resolve({ address, port }));
 }
 
 void fxtm::NetworkManager::sendAndReceive(const std::string & data)
@@ -24,22 +25,26 @@ void fxtm::NetworkManager::sendAndReceive(const std::string & data)
     auto resp = sendAndReceiveImpl(data);
 
     Logger::log("CLIENT | Response: " + resp);
-
-    std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 std::string fxtm::NetworkManager::sendAndReceiveImpl(const std::string &data)
 {
-    tcp::socket socket(mService);
-    boost::asio::connect(socket, mResolver.resolve({mAddress.c_str(), mPort.c_str()}));
+	std::array<char, fxtm::defaultMessageSize> buf = {};
+	std::copy(data.cbegin(), data.cend(), buf.begin());
 
-    size_t sendBytes = socket.write_some(boost::asio::buffer(data.data(), data.size()));
+	//send data
+    size_t sendBytes = boost::asio::write(mSocket,
+		boost::asio::buffer(buf, fxtm::defaultMessageSize));
 
-    if (sendBytes != data.size())
+    if (sendBytes != fxtm::defaultMessageSize)
         throw std::runtime_error("Can't send data to server.");
 
-    std::array<char, fxtm::defaultMessageSize> buf;
-    size_t readBytes = boost::asio::read(socket, boost::asio::buffer(buf, fxtm::defaultMessageSize));
+	//clear buffer
+	memset(&buf, 0, fxtm::defaultMessageSize);
 
-    return std::string(buf.cbegin(), buf.cbegin() + readBytes);
+	//read data
+    size_t readBytes = boost::asio::read(mSocket, 
+		boost::asio::buffer(buf, fxtm::defaultMessageSize));
+
+    return std::string(buf.begin(), buf.begin() + readBytes);
 }

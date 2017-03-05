@@ -18,10 +18,9 @@ private:
     std::string sendAndReceiveImpl(const std::string & data);
 
 private:
-    std::string mAddress;
-    std::string mPort;
     boost::asio::io_service mService;
-    boost::asio::ip::tcp::resolver mResolver;
+	boost::asio::ip::tcp::socket mSocket;
+    
 };
 
 } // ns fxtm
