@@ -20,7 +20,7 @@ fxtm::NetworkManager::NetworkManager(const std::string & address,
 
 void fxtm::NetworkManager::sendAndReceive(const std::string & data)
 {
-    Logger::log("CLIENT | Sending: " + data);
+    Logger::log("CLIENT | Send: " + data);
 
     auto resp = sendAndReceiveImpl(data);
 

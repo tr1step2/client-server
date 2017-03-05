@@ -17,7 +17,9 @@ void fxtm::Server::doAccept()
     {
         //create connection
         if (!ec)
+        {
             std::make_shared<fxtm::Session>(std::move(mSocket), mDataManager)->start();
+        }
 
         //wait for another connections
         doAccept();

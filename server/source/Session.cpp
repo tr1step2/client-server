@@ -22,6 +22,12 @@ void fxtm::Session::doRead()
     boost::asio::async_read(mSocket, boost::asio::buffer(mData, fxtm::defaultMessageSize),
         [this, self](boost::system::error_code ec, std::size_t length)
         {
+            if (ec)
+            {
+                Logger::log("SERVER | Read error: " + ec.message());
+                return;
+            }
+
             Logger::log("SERVER | Receive: " + std::string((char*)&mData));
 
             std::uint16_t value = boost::lexical_cast<std::uint16_t>((char*)&mData);
@@ -41,6 +47,12 @@ void fxtm::Session::doWrite()
     boost::asio::async_write(mSocket, boost::asio::buffer(mData, fxtm::defaultMessageSize),
         [this, self](boost::system::error_code ec, size_t length)
         {
+            if (ec)
+            {
+                Logger::log("SERVER | Write error: " + ec.message());
+                return;
+            }
+
             Logger::log("SERVER | Send: " + std::string(mData.cbegin(), mData.cend()));
 
             doRead();
