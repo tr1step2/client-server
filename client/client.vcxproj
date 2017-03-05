@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0;$(SolutionDir)\common\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\void\develop\boost_1_63_0\stage32\lib</AdditionalLibraryDirectories>
@@ -86,7 +86,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0;$(SolutionDir)\common\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\void\develop\boost_1_63_0\stage64\lib</AdditionalLibraryDirectories>
@@ -100,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0;$(SolutionDir)\common\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -116,7 +116,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\void\develop\boost_1_63_0;$(SolutionDir)\common\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -129,7 +129,6 @@
     <ClCompile Include="source\client.cpp" />
     <ClCompile Include="source\clientimpl.cpp" />
     <ClCompile Include="source\DataManager.cpp" />
-    <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\NetworkManager.cpp" />
   </ItemGroup>
@@ -137,7 +136,6 @@
     <ClInclude Include="source\client.hpp" />
     <ClInclude Include="source\clientimpl.hpp" />
     <ClInclude Include="source\DataManager.hpp" />
-    <ClInclude Include="source\Logger.hpp" />
     <ClInclude Include="source\NetworkManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
