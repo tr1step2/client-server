@@ -1,5 +1,5 @@
 #include <thread>
-#include "clientimpl.hpp"
+#include "ClientImpl.hpp"
 
 fxtm::ClientImpl::ClientImpl(const std::string & host, const short port)
     : mRunning(true)

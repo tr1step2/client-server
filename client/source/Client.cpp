@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 
-#include "client.hpp"
+#include "Client.hpp"
 
 fxtm::Client::Client(const std::string & host, const short port)
     : mImpl(new fxtm::ClientImpl(host, port))
